@@ -62,12 +62,7 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
-  let check = x - y;
-  if (check <= y){
-    return x - y;
-  } else {
-    return modulo(x - y, y);
-  }
+  
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
@@ -87,32 +82,7 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
-  if (x < 0 || y < 0){
-    return null;
-  }
-  if (x === 1 || y === 1){
-    return 1;
-  }
   
-  let xIsGreater = false;
-  
-  if (x > y){
-    xIsGreater = true;
-  }
-
-  if (xIsGreater){
-    if ((x % y === 0) && (y % y === 0)){ 
-      return y;
-    } else {
-      return gcd(x, y - 1);
-    }
-  } else { // 5, 17
-    if ((y % x === 0) && (x % x === 0)){
-      return x;
-    } else {
-      return gcd(x - 1, y);
-    }
-  }
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -147,13 +117,7 @@ var countOccurrence = function(array, value) {
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback, output=[]) {
-  if (array.length === 0){
-    return output;
-  }
-
-  output.push(callback(array[0]));
-
-  return rMap(array.slice(1), callback, output);
+  
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
