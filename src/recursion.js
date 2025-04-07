@@ -1,6 +1,6 @@
 // Solve all of the following prompts using recursion.
 
-// 1. Calculate the factorial of a number.  The factorial of a non-negative integer n,
+// 1. Calculate the factorial of a number.  The factorial of a non-negative integer n, ------------------------------------------------
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
@@ -9,9 +9,11 @@
 //output is 1 because multiplication and we don't want to multiply by 0
 var factorial = function(n, output=1) {
   //base
+  // edge case 1 if n < 0 return null
   if (n < 0){
     return null;
   };
+  // edge case 2 if n is 0 return 1
   if (n === 0){
     return 1;
   };
@@ -27,22 +29,52 @@ var factorial = function(n, output=1) {
   // 1st: return factorial (4, 5)
   // 2nd: return factorial (3, 20)
 };
+// console.log(factorial(5)); // logs 120 // works!
 
-console.log(factorial(5));
 
-
-// 2. Compute the sum of an array of integers.
+// 2. Compute the sum of an array of integers. ------------------------------------------------------------------------------------
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
-var sum = function(array) {
+
+/*
+I: An array of integers
+O: The sum of the integers
+C: Recursive function
+E: If array is empty, return 0 
+   typeof sum must equal 'number'
+*/
+
+// default param is 0 to collect sum
+var sum = (array, output=0) => {
+  //base
+  if (array.length === 0){
+    return output;
+  };
+  //recursion
+  //update output with first in array
+  output += array[0];
+  // return function with sliced array
+  return sum(array.slice(1), output);
+
 };
 
-// 3. Sum all numbers in an array containing nested arrays.
+// 3. Sum all numbers in an array containing nested arrays. ---------------------------------------------------------------------------
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
 };
 
-// 4. Check if a number is even.
+// 4. Check if a number is even. ------------------------------------------------------------------------------------------------------
 var isEven = function(n) {
+  // base - if subtracting by 2 ends with 0, it was even all along
+  if (x === 1) {
+    return false;
+    // base - if subtracting by 2 eventually hits 1, it was odd all along
+  } else if (x === 0){
+    return true;
+  }
+
+  // recursion
+  // keep subtracting by 2 until you hit base case
+  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
