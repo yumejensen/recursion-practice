@@ -59,31 +59,71 @@ var sum = (array, output=0) => {
 
 // 3. Sum all numbers in an array containing nested arrays. ---------------------------------------------------------------------------
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {
-};
+
+// LOL I DIDN'T NEED TO DO THIS ONE
+// // default param is 0 to collect sum
+// var arraySum = (array, output=0) => {
+//   // base
+//   if (array.length === 0){
+//     return output;
+//   }
+
+//   // recursion
+//   output += array[0]; // output is reassigned to output + 1st in array
+//   return arraySum(array.slice(1), output)
+// };
+
+
 
 // 4. Check if a number is even. ------------------------------------------------------------------------------------------------------
 var isEven = function(n) {
   // base - if subtracting by 2 ends with 0, it was even all along
-  if (x === 1) {
+  if (n === 1) {
     return false;
     // base - if subtracting by 2 eventually hits 1, it was odd all along
-  } else if (x === 0){
+  } else if (n === 0){
     return true;
   }
-
   // recursion
   // keep subtracting by 2 until you hit base case
-  return isEven(n - 2);
+  if (n < 0){
+    // if it's negative add until hit 1 or 0
+    return isEven(n+2);
+    // if it's positive subtract until 1 or 0
+  } else if (n > 0){
+    return isEven(n-2);
+  }
 };
+// console.log(isEven(5)); // false - works!
 
-// 5. Sum all integers below a given integer.
+
+// 5. Sum all integers below a given integer. -----------------------------------------------------------------------------------------
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
-};
 
-// 6. Get the integers in range (x, y).
+// default param 0 to add sum
+var sumBelow = (n, output=0) => {
+  // base
+  if (n === 0){
+    return output;
+  }
+  
+  // output starts at 1 below or 1 above
+  if (n > 0){
+    output += n-1;
+  } else if (n < 0){
+    output += n+1;
+  }
+  //recursion
+  if (n > 0){
+    return sumBelow(n-1, output);
+  } else if (n < 0){
+    return sumBelow(n+1, output);
+  }
+};
+//console.log(sumBelow(7)); // 21 - works!
+
+// 6. Get the integers in range (x, y). -------------------------------------------------------------------------------------------------
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
 };
@@ -116,9 +156,9 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
-var modulo = function(x, y) {
+// var modulo = function(x, y) {
   
-};
+// };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
