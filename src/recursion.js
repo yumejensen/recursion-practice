@@ -137,19 +137,22 @@ E: Should work for negative numbers too
 
 //output is an array
 var range = (x, y, output=[]) => {
-  //base
-
-
-
-  //recursion
-  // if x < y, add and push
-  if (x < y){
-    output.push(x+1);
-    // if x > y, subtract
-  } else is (x < y){
-    output.push(x-1);
+  //base - once the recursion reaches y, stop
+  if (output[output.length-1] === y){
+    return output;
   }
-  
+  //output - add one to increment low -> high or minus one for high -> low
+  if (x < y){
+    output.push(x + 1);
+  } else if (x > y){
+    output.push(x - 1);
+  }
+  // recursion - still need both conditions
+  if (x < y){
+    return range (x + 1, output);
+  } else if (x > y){
+    return range (x - 1, output);
+  }
 };
 
 
