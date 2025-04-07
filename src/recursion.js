@@ -127,10 +127,34 @@ var sumBelow = (n, output=0) => {
 
 // 6. Get the integers in range (x, y). -------------------------------------------------------------------------------------------------
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+
+/*
+I: Two numbers
+O: An array with the numbers in between 
+C: Recursion
+E: Should work for negative numbers too 
+*/
+
+//output is an array
+var range = (x, y, output=[]) => {
+  //base
+
+
+
+  //recursion
+  // if x < y, add and push
+  if (x < y){
+    output.push(x+1);
+    // if x > y, subtract
+  } else is (x < y){
+    output.push(x-1);
+  }
+  
 };
 
-// 7. Compute the exponent of a number.
+
+
+// 7. Compute the exponent of a number. -------------------------------------------------------------------------------------------------
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64.  Here, 8 is the base and 2 is the exponent.
 // Example:  exponent(4,3);  // 64
