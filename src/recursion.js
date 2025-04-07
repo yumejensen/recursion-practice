@@ -54,8 +54,8 @@ var sum = (array, output=0) => {
   output += array[0];
   // return function with sliced array
   return sum(array.slice(1), output);
-
 };
+
 
 // 3. Sum all numbers in an array containing nested arrays. ---------------------------------------------------------------------------
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
@@ -122,6 +122,8 @@ var sumBelow = (n, output=0) => {
   }
 };
 //console.log(sumBelow(7)); // 21 - works!
+//console.log(sumBelow(-7)); // -21 - works!
+
 
 // 6. Get the integers in range (x, y). -------------------------------------------------------------------------------------------------
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
