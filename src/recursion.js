@@ -137,21 +137,26 @@ E: Should work for negative numbers too
 
 //output is an array
 var range = (x, y, output=[]) => {
+  // edge case if x and y undefined
+  if (x === undefined || y === undefined || x - y === 0 || y - x === 0){
+    return [];
+  }
   //base - once the recursion reaches y, stop
-  if (output[output.length-1] === y){
+  // one for pos direction and one for neg direction
+  if (x < y && output[output.length-1] === y - 1){
+    return output;
+  } else if (x > y && output[output.length-1] === y + 1){
     return output;
   }
+  // can also do: if (x + 1 === y)
+
   //output - add one to increment low -> high or minus one for high -> low
   if (x < y){
     output.push(x + 1);
+    return range (x + 1, y, output);
   } else if (x > y){
     output.push(x - 1);
-  }
-  // recursion - still need both conditions
-  if (x < y){
-    return range (x + 1, output);
-  } else if (x > y){
-    return range (x - 1, output);
+    return range (x - 1, y, output);
   }
 };
 
