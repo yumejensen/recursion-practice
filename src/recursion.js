@@ -170,22 +170,27 @@ var range = (x, y, output=[]) => {
 //
 // for negative exponent 5^-2 is the same as 1/5^2
 
-var exponent = (base, exp, output=0) => {
-  //base case
+function exponent(base, exp, answer=1){
+  //base case //when counter goes down to 0, return answer
+  // if input is 0 to begin with, answer = 1
   if (exp === 0){
-    return output;
+    return answer;
   }
-
-
-  //recursion if exp positive - multiply itself, decrease exp by 1
-  output += base * base;
-  return exponent = (base * base, exp - 1, output)
-
-  //recursion if exp negative
-
-
+  // creating the exponent
+  if (exp > 0){
+    answer *= base;
+  } else if (exp < 0){
+    answer *= 1/base;
+  }
+  //recurison for positive, exp counter goes down
+  if (exp > 0){
+    return exponent(base, exp-1, answer);
+    // recursion for negative, exp counter goes up
+  } else if (exp < 0){
+    return exponent(base, exp+1, answer);
+  }
 };
-console.log(exponent(8, 2));
+
 
 // 8. Determine if a number is a power of two. ------------------------------------------------------------------------------------------
 // powerOfTwo(1); // true
