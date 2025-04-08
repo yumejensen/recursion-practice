@@ -243,11 +243,28 @@ var palindrome = function(string) {
   
 // };
 
-// 12. Write a function that multiplies two numbers without using the * operator  or
+// 12. Write a function that multiplies two numbers without using the * operator  or ------------------------------------------------------
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
+
+//base case: y(counter) hits 0
+//output - if multiplying by positive, add x (y many times)
+         //if multiplying by negative, minus x (y many times)
+//recursion - y will be the counter, -1 to go down to 0 and +1 to go up to 0
+
+var multiply = function(x, y, output=0) {
+  if (y === 0){
+    return output;
+  }
+  if (y < 0){
+    output -= x;
+    return multiply(x, y+1, output);
+  } else if (y > 0){
+    output += x;
+    return multiply(x, y-1, output);
+  }
 };
+
 
 // // 13. Write a function that divides two numbers without using the / operator  or
 // // JavaScript's Math object.
