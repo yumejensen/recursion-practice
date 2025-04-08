@@ -176,7 +176,7 @@ function exponent(base, exp, answer=1){
   if (exp === 0){
     return answer;
   }
-  // creating the exponent
+  // creating the exponent for pos and neg
   if (exp > 0){
     answer *= base;
   } else if (exp < 0){
@@ -185,7 +185,7 @@ function exponent(base, exp, answer=1){
   //recurison for positive, exp counter goes down
   if (exp > 0){
     return exponent(base, exp-1, answer);
-    // recursion for negative, exp counter goes up
+  // recursion for negative, exp counter goes up
   } else if (exp < 0){
     return exponent(base, exp+1, answer);
   }
