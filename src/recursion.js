@@ -223,13 +223,12 @@ var reverse = function(string, output="") {
   if (string.length === 0){
     return output;
   }
-  // output
-  output += string[0];
+  // output - add last item in string
+  output += string[string.length-1];
 
-  //call self
-  reverse(string.slice(1), output);
+  //call self and chop off last letter in string
+  return reverse(string.slice(0, string.length-1), output);
 };
-
 
 // 10. Write a function that determines if a string is a palindrome. --------------------------------------------------------------------
 var palindrome = function(string) {
