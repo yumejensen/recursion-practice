@@ -225,7 +225,6 @@ var reverse = function(string, output="") {
   }
   // output - add last item in string
   output += string[string.length-1];
-
   //call self and chop off last letter in string
   return reverse(string.slice(0, string.length-1), output);
 };
