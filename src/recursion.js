@@ -161,7 +161,6 @@ var range = (x, y, output=[]) => {
 };
 
 
-
 // 7. Compute the exponent of a number. -------------------------------------------------------------------------------------------------
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64.  Here, 8 is the base and 2 is the exponent.
@@ -196,16 +195,46 @@ function exponent(base, exp, answer=1){
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(n) {
+/*
+I: A number
+O: A boolean, true if a power of 2, false otherwise
+*/
+var powerOfTwo = function(n, output=n) {
+  // base case - when u keep dividing and it gets to 1, it's a power of 2
+ if (output === 1){
+    return true;
+ } else if (output !== 1){
+   return false;
+ }
+  //recursion condition
+  output /= 2;
+  //invoke function
+  return powerOfTwo(n/2, output);
 };
 
-// 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+
+// 9. Write a function that accepts a string a reverses it. -----------------------------------------------------------------------------
+/*
+I: A string
+O: The string reversed
+*/
+var reverse = function(string, output="") {
+  //base case
+  if (string.length === 0){
+    return output;
+  }
+  // output
+  output += string[0];
+
+  //call self
+  reverse(string.slice(1), output);
 };
 
-// 10. Write a function that determines if a string is a palindrome.
+
+// 10. Write a function that determines if a string is a palindrome. --------------------------------------------------------------------
 var palindrome = function(string) {
 };
+
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
