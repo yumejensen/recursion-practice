@@ -198,18 +198,23 @@ function exponent(base, exp, answer=1){
 /*
 I: A number
 O: A boolean, true if a power of 2, false otherwise
+
+Note from Justin Helpdesk
+There are sometimes ways that you can set a default case, and essentially create a while loop. 
+You can think about it as "we are going to return true 
+as long as we don't encounter a case that requires us to return false."
+
 */
-var powerOfTwo = function(n, output=n) {
+var powerOfTwo = function(n) {
   // base case - when u keep dividing and it gets to 1, it's a power of 2
- if (output === 1){
+ if (n === 1){
     return true;
- } else if (output !== 1){
+    // if it's not a whole number or if it's 0, it's not a power of 2
+ } else if (!Number.isInteger(n) || n === 0){
    return false;
  }
-  //recursion condition
-  output /= 2;
-  //invoke function
-  return powerOfTwo(n/2, output);
+  //invoke function - change n by dividing by 2
+  return powerOfTwo(n/2);
 };
 
 
@@ -285,7 +290,21 @@ var multiply = function(x, y, output=0) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
+
 var compareStr = function(str1, str2) {
+  // base case
+  if (str1.length === 0 && str2.length === 0){
+    // if it reaches this point it must be true...
+    return true;
+  }
+  // compare the first of str 1 and str 2 at each recursion
+  if (str1[0] === str2[0]){
+    // call func w/ 1st letter chopped off
+    return compareStr(str1.slice(1), str2.slice(1));
+  } else {
+    // if at any point the letters aren't equal it will hit false and not recurse
+    return false;
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
