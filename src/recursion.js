@@ -294,7 +294,7 @@ var multiply = function(x, y, output=0) {
 var compareStr = function(str1, str2) {
   // base case
   if (str1.length === 0 && str2.length === 0){
-    // if it reaches this point it must be true...
+    // if it reaches this point it must be true
     return true;
   }
   // compare the first of str 1 and str 2 at each recursion
@@ -302,7 +302,7 @@ var compareStr = function(str1, str2) {
     // call func w/ 1st letter chopped off
     return compareStr(str1.slice(1), str2.slice(1));
   } else {
-    // if at any point the letters aren't equal it will hit false and not recurse
+    // if at any recursion the letters aren't equal, hit false and stop
     return false;
   }
 };
