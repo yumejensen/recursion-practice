@@ -380,7 +380,15 @@ var rMap = function(array, callback, output=[]) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+
+//fibonacci sequence is the sum of preceding two numbers
+var nthFibo = function(n, output=0) {
+  //base
+
+  //output...
+
+
+  //recursion
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
