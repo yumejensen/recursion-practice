@@ -238,10 +238,19 @@ var reverse = function(string, output="") {
 var palindrome = function(string) {
   // take input string and remove spaes (edge case) and lowercase it (edge case)
   let revisedString = string.replaceAll(" ", "").toLowerCase();
-
-  // base case (even # of letters and odd # of letters)
-
   
+  // base case - sliced down to 1 or 0
+  if (revisedString.length === 0 || revisedString.length === 1){
+    return true
+  }
+  
+  //recursion
+  if (revisedString[0] === revisedString[revisedString.length-1]){
+    // cut both ends 
+    return palindrome(revisedString.slice(1, revisedString.length-1))
+  } else {
+    return false;
+  }
 };
 
 
