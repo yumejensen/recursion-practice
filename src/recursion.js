@@ -336,7 +336,16 @@ var createArray = function(str, output=[]){
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (arr, output=[]) {
+  // base case
+  if (arr.length === 0){
+    return output;
+  } else {
+    // recursion - push last into output
+    output.push(arr[arr.length-1]);
+  }
+  // call self with last chopped from string - array slice
+  return reverseArr(arr.slice(0, arr.length-1), output);
 };
 
 // 18. Create a new array with a given value and length.
