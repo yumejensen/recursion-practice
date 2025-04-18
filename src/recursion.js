@@ -542,21 +542,23 @@ var alternateSign = function(array) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str, output="") {
-  // make numbers 0-9 array
-  let digitStr = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
   // base case - str sliced to 0
   if (str.length === 0){
     return output;
   }
-  // if first index is a number, replace with digitStr[number]
-  if (typeof str[0] === 'number'){
-    output += digitStr[str[0]];
-    // else just add the character as normal
-  } else {
+  // make numbers 0-9 array
+  let digitStr = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  // if first index is not a number, add str as is
+  if (!Number(str[0])){
     output += str[0];
+    // else it is a number, replace with corresponding in digitArr
+  } else {
+    output += digitStr[str[0]];
   }
+  // recursion with first sliced
   return numToText(str.slice(1), output);
 };
+console.log(numToText("I have 9 dogs and 3 ponies"));
 
 
 // *** EXTRA CREDIT *** ------------------------------------------------------------------
