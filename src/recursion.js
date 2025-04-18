@@ -560,9 +560,20 @@ var minimizeZeroes = function(array, output=[]) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, output=[]) {
+  // base case - array sliced to 0
+  if (array.length === 0){
+    return output;
+  }
   // even index is pos, odd index is neg
-  
+   // if the last index in output is even, push negative
+  if (output.indexOf(output[output.length-1]) % 2 === 0){
+    output.push(-Math.abs(array[0]));
+   // if the last index in output is odd, push positive
+  } else if (output.indexOf(output[output.length-1]) % 2 !== 0){
+    output.push(Math.abs(array[0]));
+  }
+  return alternateSign(array.slice(1), output);
 };
 
 
