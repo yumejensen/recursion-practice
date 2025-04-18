@@ -423,14 +423,27 @@ var rMap = function(array, callback, output=[]) {
 // nthFibo(3); // 2
 
 //fibonacci sequence is the sum of preceding two numbers
-var nthFibo = function(n, output=0) {
-  //base
-
-  //output...
-
-
-  //recursion
+var nthFibo = function(n, fib=[0, 1]) {
+  // default param is first two of fibonacci
+  // edge case, null for negative n
+  if (n < 0){
+    return null;
+  }
+  // if n is 0
+  if (n === 0){
+    return 0;
+  }
+  //base - does n exist as an index in fib?
+  if (fib.length === n + 1){
+    return fib[n];
+  }
+  //recursion - add two last nums of fib to make next number
+  // sum of 0 and 1 is 1 -> [0, 1, 1]
+  let newFib = fib[fib.length - 1] + fib[fib.length - 2];
+  fib.push(newFib);
+  return nthFibo(n, fib);
 };
+
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
@@ -479,23 +492,23 @@ var capitalizeFirst = function(array, output=[]) {
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-// var letterTally = function(str, obj) {
-//   // base - string sliced to 0
-//   if (str.length === 0){
-//     return obj;
-//   }
-//   // key is letter in str
-//   let key = str[0];
-//   // if key doesn't exist, make it
-//   if(!obj[key]) {
-//     obj[key] = 1;
-//     // if it does, add one to value
-//   } else {
-//     obj[key] += 1;
-//   }
-//   return letterTally(str.slice(1), obj);
-// };
-//not working!
+var letterTally = function(str, obj={}) {
+  // base - string sliced to 0
+  if (str.length === 0){
+    return obj;
+  }
+  // key is letter in str
+  let key = str[0];
+  // if key doesn't exist, make it
+  if(!obj[key]) {
+    obj[key] = 1;
+    // if it does, add one to value
+  } else {
+    obj[key] += 1;
+  }
+  return letterTally(str.slice(1), obj);
+};
+console.log(letterTally('potato'));
 
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -503,18 +516,19 @@ var capitalizeFirst = function(array, output=[]) {
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list, output=[]) {
-  //base
+var compress = function(list, output=[]){
+  // base
   if (list.length === 0){
     return output;
   }
-  //recursion - if it doesn't exist in output, push
-  if (list[0] !== output[0]){
+  //recursion
+  if (list[0] !== output[output.length-1]){
     output.push(list[0]);
   }
   return compress(list.slice(1), output);
 };
-//console.log(compress([1, 2, 2, 3, 4, 4, 5, 5, 5])); // NOT WORKING
+
+console.log(compress([1, 2, 2, 3, 4, 4, 5, 5, 5])); 
 
 
 // // 32. Augment every element in a list with a new value where each element is an array
@@ -526,7 +540,19 @@ var compress = function(list, output=[]) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, output=[]) {
+  // base case - array sliced to 0
+  if (array.length === 0){
+    return output;
+  }
+  // if first in array is not 0 - push
+  if (array[0] !== 0) {
+    output.push(array[0]);
+    // else if array[0] is 0 and last in output is NOT 0
+  } else if (array[0] === 0 && output[output.length - 1] !== 0){
+    output.push(array[0]);
+  } 
+  return minimizeZeroes(array.slice(1), output)
 };
 
 
@@ -535,6 +561,8 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  // even index is pos, odd index is neg
+  
 };
 
 
